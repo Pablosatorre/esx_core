@@ -52,12 +52,6 @@ ESX.RegisterCommand('car', 'admin', function(xPlayer, args, showError)
 		DeleteEntity(playerVehicle)
 	end
 
-	ESX.DiscordLogFields("UserActions", "/car Triggered", "pink", {
-		{name = "Player", value = xPlayer.name, inline = true},
-		{name = "ID", value = xPlayer.source, inline = true},
-		{name = "Vehicle", value = args.car, inline = true}
-	})
-
 	ESX.OneSync.SpawnVehicle(args.car, playerCoords, playerHeading, upgrades, function(networkId)
 		if networkId then
 			local vehicle = NetworkGetEntityFromNetworkId(networkId)
