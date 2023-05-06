@@ -183,6 +183,61 @@ AddEventHandler('esx:playerLoaded', function(xPlayer, isNew, skin)
 	StartServerSyncLoops()
 end)
 
+RegisterNetEvent('esx:dar2')
+AddEventHandler('esx:dar2', function()
+
+	Citizen.Wait(250)
+
+	if not HasAnimDictLoaded('mp_common') then
+  
+		RequestAnimDict('mp_common') 
+
+		while not HasAnimDictLoaded('mp_common') do 
+
+			Citizen.Wait(1)
+
+		end
+
+	end
+
+
+	TaskPlayAnim(GetPlayerPed(-1), 'mp_common', 'givetake1_a', 8.0, -8,-1, 2, 0, 0, 0, 0)
+
+	Citizen.Wait(2000)
+
+	ClearPedTasks(GetPlayerPed(-1))
+
+end)
+
+RegisterNetEvent('esx:dar')
+AddEventHandler('esx:dar', function(heading)
+
+	Citizen.Wait(250)
+
+	if not HasAnimDictLoaded('mp_common') then
+  
+		RequestAnimDict('mp_common') 
+
+		while not HasAnimDictLoaded('mp_common') do 
+
+			Citizen.Wait(1)
+
+		end
+
+	end
+
+	--SetEntityHeading(GetPlayerPed(-1), heading - 90)
+	
+	Wait(100)
+
+	TaskPlayAnim(GetPlayerPed(-1), 'mp_common', 'givetake1_b', 8.0, -8,-1, 2, 0, 0, 0, 0)
+
+	Citizen.Wait(2000)
+
+	ClearPedTasks(GetPlayerPed(-1))
+
+end)
+
 RegisterNetEvent('esx:onPlayerLogout')
 AddEventHandler('esx:onPlayerLogout', function()
 	ESX.PlayerLoaded = false
